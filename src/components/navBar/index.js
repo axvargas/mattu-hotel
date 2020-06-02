@@ -5,23 +5,28 @@ import { Tabs, Tab, Toolbar, } from '@material-ui/core'
 import useStyles from './style';
 
 
-const NavBar = () => {
-    const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+const NavBar = ({ location }) => {
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-   
+    const classes = useStyles();
+    let value = 0;
+    if (location.pathname === '/') {
+        value = 0
+    }
+    else if (location.pathname === '/about') {
+        value = 1
+    }
+    else {
+        value = null
+    }
     return (
         <Toolbar>
-            <Tabs value={value}
+            <Tabs value={value !== null ? value : 0}
                 textColor="inherit"
-                classes={{
+                classes={value !== null ? {
                     indicator: classes.indicator,
-                }}
-                onChange={handleChange}
-                
+                } : { indicator: classes.indicatorNone }}
+
+
             >
 
                 <Tab
@@ -29,8 +34,8 @@ const NavBar = () => {
                     component={GatsbyLink}
                     to={'/'}
                     label=" Home"
-                    activeClassName={classes.selected}
-                    
+                // activeClassName={classes.selected}
+
                 />
 
                 <Tab
@@ -38,8 +43,8 @@ const NavBar = () => {
                     component={GatsbyLink}
                     to={'/about'}
                     label="About"
-                    activeClassName={classes.selected}
-                  
+                // activeClassName={classes.selected}
+
                 />
             </Tabs>
         </Toolbar>

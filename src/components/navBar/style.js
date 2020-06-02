@@ -2,10 +2,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     indicator: {
-        height: 0,
+        height: 4,
         borderTopLeftRadius: 3,
         borderTopRightRadius: 3,
         backgroundColor: theme.palette.common.white,
+    },
+    indicatorNone: {
+        height: 0,
+
     },
     link: {
         textDecoration: 'none',

@@ -4,24 +4,22 @@ import ThemeTopLayout from "gatsby-theme-material-ui-top-layout/src/components/t
 //Helmet import
 import { Helmet } from 'react-helmet';
 
-
-//Component imports
-import Header from '../../components/header';
-import Footer from '../../components/footer';
+import useSeo from '../../hooks/useSeo';
 
 
 
-export default function TopLayout(props) {
-    console.log(props);
+export default function TopLayout({ theme, children }) {
+    const seo = useSeo();
+    const { fallbackSeo: { title, description } } = seo;
     return (
-        <ThemeTopLayout theme={props.theme}>
+        <ThemeTopLayout theme={theme}>
             <Helmet>
-                <title>Mattu Hotel</title>
+                <title>{title}</title>
+                <meta name="description" content={description} />
             </Helmet>
 
-            <Header />
-            {props.children}
-            <Footer />
+            {children}
+
         </ThemeTopLayout>
     );
 }

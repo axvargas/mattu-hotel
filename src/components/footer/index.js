@@ -10,9 +10,9 @@ export default function Footer() {
         <Container style={{ marginTop: '5rem' }}>
             <Container>
                 <Typography variant="body2" color="textSecondary" align="center">
-                    {`Built with love by the `}
+                    {`Built with love by `}
                     <Link color="primary" target="_blank" href="https://github.com/axvargas">
-                        MattuApp
+                        MattuApp &copy;
                     </Link>
                 </Typography>
             </Container>

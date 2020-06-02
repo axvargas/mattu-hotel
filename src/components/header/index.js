@@ -8,17 +8,17 @@ import { AppBar, Typography, Toolbar, Container, Grid, Hidden } from '@material-
 
 //comoponent import
 import NavBar from '../navBar'
-// import ElevationScroll from './elevationScroll';
+import ElevationScroll from './elevationScroll';
 //style imports
 import useStyles from './style';
 
-const Header = () => {
+const Header = ({ props }) => {
     const classes = useStyles();
-    
+
     return (
         <header>
-            {/* <ElevationScroll {...props}> */}
-                <AppBar color="primary" position="static" elevation={2} className={classes.appbar} >
+            <ElevationScroll {...props}>
+                <AppBar color="primary" elevation={2} className={classes.appbar} >
                     {/* Desktop Section */}
                     <Hidden mdUp>
                         <Grid container justify="center">
@@ -35,7 +35,7 @@ const Header = () => {
                             </Toolbar>
                         </Grid>
                         <Grid container justify="center">
-                            <NavBar />
+                            <NavBar location={props.location} />
                         </Grid>
                     </Hidden>
                     {/* Mobile Section */}
@@ -51,12 +51,17 @@ const Header = () => {
                                     </Typography>
                                 </Toolbar>
 
-                                <NavBar />
+                                <NavBar location={props.location} />
                             </Grid>
                         </Container>
                     </Hidden>
                 </AppBar>
-            {/* </ElevationScroll> */}
+            </ElevationScroll>
+            <Hidden mdUp>
+                <Toolbar />
+            </Hidden>
+            <Toolbar />
+
         </header >
     );
 }
